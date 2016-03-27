@@ -1,0 +1,9 @@
+Resize stack automatically (double array size)
+
+Use CuTest to write unit tests
+
+Tests:
+1. Pop from empty stack
+2. Peek on empty stack
+3. Push on a full stack (check doubling)
+...
