@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 typedef struct CHStack {
-  int *array;
+  int *elements;
   int maxElems;
   int size;
 } CHStack;
