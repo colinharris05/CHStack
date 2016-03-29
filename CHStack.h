@@ -2,14 +2,14 @@
 #include <stdio.h>
 
 typedef struct CHStack {
-  int *elements;
+  void **elements;
   int maxElems;
   int size;
 } CHStack;
 
-CHStack *newCHStack();
+CHStack *newCHStack(const int maxElems);
 void freeCHStack(CHStack *stack);
 void print(CHStack *stack);
-int peek(CHStack *stack);
-int pop(CHStack *stack);
-void push(CHStack *stack, int p);
+void *peek(CHStack *stack);
+void *pop(CHStack *stack);
+void push(CHStack *stack, void *p);

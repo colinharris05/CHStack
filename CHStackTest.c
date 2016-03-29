@@ -14,10 +14,11 @@ int main(int argc, char *argv[])
   if (argc < 2) {
     printUsageExit();
   }
-  CHStack *stack = newCHStack();
+  CHStack *stack = newCHStack(10);
   int i;
   for (i = 1; i < argc; i++) {
-    push(stack, atoi(argv[i]));
+    char *c = argv[i];
+    push(stack, c);
   }
   print(stack); 
   pop(stack);
@@ -25,8 +26,8 @@ int main(int argc, char *argv[])
   pop(stack);
   print(stack);
 
-  int peekedValue = peek(stack);
-  printf("peekedValue: %i\n", peekedValue);
+  void *peekedValue = peek(stack);
+  printf("peekedValue: %s\n", (char *)peekedValue);
   print(stack);
 
   freeCHStack(stack);
