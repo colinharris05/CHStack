@@ -3,6 +3,7 @@
 
 typedef struct CHStack {
   int *array;
+  int maxElems;
   int size;
 } CHStack;
 

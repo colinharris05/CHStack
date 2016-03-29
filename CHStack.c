@@ -1,16 +1,35 @@
 #include "CHStack.h"
-
- CHStack *newCHStack() {
+ 
+CHStack *newCHStack() {
   CHStack *stack = malloc(sizeof(CHStack));
-  stack->array = malloc(sizeof(int) * 10); // Default of 10 elements
+  stack->maxElems = 10;
+  stack->array = malloc(sizeof(int) * stack->maxElems); // Default of 10 elements
   stack->size = 0;
   printf("%s\n", "Returning new CHStack");
   return stack;
 }
 
 void freeCHStack(CHStack *stack) {
-  free(stack->array);
   free(stack);
+  stack = NULL;
+}
+
+int *doubleArraySize(int *array, int size) {
+  int doubledSize = size * 2;
+  int *newArray = malloc(sizeof(int) * doubledSize);
+  int i;
+  for (i = 0; i < size; i++) {
+    newArray[i] = array[i];
+  }
+  return newArray;
+}
+
+// Used to assure the stack has enough space allocated
+void checkSize(CHStack *stack) {
+  if ((stack->size + 1) == stack->maxElems) { // If adding one more elm equals maxElems (allocated size)
+    printf(" ***--Doubling array--***\n");
+    stack->array = doubleArraySize(stack->array, stack->maxElems);
+  }
 }
 
 int peek(CHStack *stack) {
@@ -29,6 +48,7 @@ int pop(CHStack *stack) {
 }
 
 void push(CHStack *stack, int p) {
+  checkSize(stack);
   if (stack->size == 0) {
     printf("Push %i at position %i\n", p, 0);
     stack->array[0] = p;
