@@ -1,7 +1,7 @@
 #include "CHStack.h"
 
 void printSize(CHStack *stack) {
-  printf("Size: %i\n", stack->size);
+  printf("Size: %i\n", stackSize(stack));
 }
 
 void printUsageExit() {
