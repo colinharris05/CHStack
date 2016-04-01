@@ -1,4 +1,10 @@
 #include "CHStack.h"
+
+struct CHStack {
+  void **elements;
+  int maxElems;
+  int size;
+};
  
 CHStack *newCHStack(const int maxElems) {
   CHStack *stack = malloc(sizeof(CHStack));
@@ -61,4 +67,8 @@ void print(CHStack *stack) {
     printf("%s ", (char *)stack->elements[i]);
   }
   printf(" <--Top\n");
+}
+
+int stackSize(CHStack *stack) {
+  return stack->size;
 }
