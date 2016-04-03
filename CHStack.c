@@ -5,7 +5,7 @@ struct CHStack {
   int maxElems;
   int size;
 };
- 
+
 CHStack *newCHStack(const int maxElems) {
   CHStack *stack = malloc(sizeof(CHStack));
   stack->maxElems = maxElems;
@@ -37,13 +37,17 @@ void checkSize(CHStack *stack) {
 }
 
 void *peek(CHStack *stack) {
-  return stack->elements[stack->size - 1];
+  if (stack->size > 0) {
+    return stack->elements[stack->size - 1];
+  } else {
+    return NULL;
+  }
 }
 
 void *pop(CHStack *stack) {
   if (stack->size == 0) {
     return NULL;
-  }  
+  }
   void *result = stack->elements[stack->size - 1];
   stack->size--;
   return result;
