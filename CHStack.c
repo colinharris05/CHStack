@@ -1,12 +1,15 @@
 #include "CHStack.h"
 
-struct CHStack {
+#include <stdlib.h>
+#include <stdio.h>
+
+struct _CHStack {
   void **elements;
   int maxElems;
   int size;
 };
 
-CHStack *newCHStack(const int maxElems) {
+CHStack *chstack_new(const unsigned int maxElems) {
   CHStack *stack = malloc(sizeof(CHStack));
   stack->maxElems = maxElems;
   stack->elements = malloc(sizeof(void *) * maxElems); // Default to size 10
@@ -14,7 +17,7 @@ CHStack *newCHStack(const int maxElems) {
   return stack;
 }
 
-void freeCHStack(CHStack *stack) {
+void chstack_free(CHStack *stack) {
   free(stack);
   stack = NULL;
 }
@@ -36,7 +39,7 @@ void checkSize(CHStack *stack) {
   }
 }
 
-void *peek(CHStack *stack) {
+void *chstack_peek(CHStack *stack) {
   if (stack->size > 0) {
     return stack->elements[stack->size - 1];
   } else {
@@ -44,7 +47,7 @@ void *peek(CHStack *stack) {
   }
 }
 
-void *pop(CHStack *stack) {
+void *chstack_pop(CHStack *stack) {
   if (stack->size == 0) {
     return NULL;
   }
@@ -53,7 +56,7 @@ void *pop(CHStack *stack) {
   return result;
 }
 
-void push(CHStack *stack, void *p) {
+void chstack_push(CHStack *stack, void *p) {
   if (stack->size == 0) {
     stack->elements[0] = p;
     stack->size = 1;
@@ -64,15 +67,6 @@ void push(CHStack *stack, void *p) {
   }
 }
 
-void print(CHStack *stack) {
-  printf("Bottom--> ");
-  int i;
-  for (i = 0; i < stack->size; i++) {
-    printf("%s ", (char *)stack->elements[i]);
-  }
-  printf(" <--Top\n");
-}
-
-int stackSize(CHStack *stack) {
+int chstack_size(CHStack *stack) {
   return stack->size;
 }
