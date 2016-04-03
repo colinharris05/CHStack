@@ -1,13 +1,9 @@
-#include <stdlib.h>
-#include <stdio.h>
+struct _CHStack;
+typedef struct _CHStack CHStack;
 
-struct CHStack;
-typedef struct CHStack CHStack;
-
-CHStack *newCHStack(const int maxElems);
-void freeCHStack(CHStack *stack);
-void print(CHStack *stack);
-void *peek(CHStack *stack);
-void *pop(CHStack *stack);
-void push(CHStack *stack, void *p);
-int stackSize(CHStack *stack);
+CHStack *chstack_new(const unsigned int maxElems);
+void chstack_free(CHStack *stack);
+void *chstack_peek(CHStack *stack);
+void *chstack_pop(CHStack *stack);
+void chstack_push(CHStack *stack, void *p);
+int chstack_size(CHStack *stack);

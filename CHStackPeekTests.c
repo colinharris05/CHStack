@@ -4,30 +4,30 @@
 #include "CuTest.h"
 
 void TestPeekWithZeroElements(CuTest *tc) {
-  CHStack *stack = newCHStack(5);
-  void *actual = peek(stack);
+  CHStack *stack = chstack_new(5);
+  void *actual = chstack_peek(stack);
   void *expected = NULL;
   CuAssertPtrEquals(tc, expected, actual);
 }
 
 void TestPeekWithOneElement(CuTest *tc) {
-  CHStack *stack = newCHStack(5);
+  CHStack *stack = chstack_new(5);
   int i = 5;
-  push(stack, &i);
+  chstack_push(stack, &i);
 
-  int *actual = (int *)peek(stack);
+  int *actual = (int *)chstack_peek(stack);
   int expected = 5;
   CuAssertIntEquals(tc, expected, *actual);
 }
 
 void TestPeekWithTwoElements(CuTest *tc) {
-  CHStack *stack = newCHStack(5);
+  CHStack *stack = chstack_new(5);
   int i = 5;
-  push(stack, &i);
+  chstack_push(stack, &i);
   int j = 7;
-  push (stack, &j);
+  chstack_push(stack, &j);
 
-  int *actual = (int *)peek(stack);
+  int *actual = (int *)chstack_peek(stack);
   int expected = 7;
   CuAssertIntEquals(tc, expected, *actual);
 }
