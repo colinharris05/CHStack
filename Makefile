@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -I.
 
 DEPS = CHStack.h
-OBJ = CHStack.o CHStackPeekTests.o AllTests.o CuTest.o CuTestTest.o
+OBJ = CHStack.o CHStackPeekTests.o CHStackPopTests.o CHStackPushTests.o AllTests.o CuTest.o CuTestTest.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
